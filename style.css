@@ -147,3 +147,76 @@ footer {
         transform: translate(100px, -100px) scale(1.15);
     }
 }
+
+.service-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.service-card {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    background: linear-gradient(140deg, rgba(230, 230, 230, 240), rgba(200, 200, 200, 240));
+    padding: 2rem;
+    border-radius: 1.5rem;
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.service-icon img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    border-radius: 1rem;
+}
+
+.service-content h3 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.service-content p {
+    margin: 0.5rem 0;
+    opacity: 0.8;
+}
+
+.service-content a {
+    color: #266099;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.service-content a:hover {
+    text-decoration: underline;
+}
+
+nav a {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 4px;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    background-color: #007aff;
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+

@@ -219,4 +219,50 @@ nav a::after {
 nav a:hover::after {
     width: 100%;
 }
+/* Style les inputs de type "text", les éléments select et les textareas */
+input[type=text], select, textarea {
+    width: 100%; /* Largeur pleine */
+    padding: 12px; /* Un peu de padding */
+    border: 1px solid #ccc; /* Bordure grise */
+    border-radius: 4px; /* Bords arrondis */
+    box-sizing: border-box; /* S'assurer que le padding et la largeur restent en place */
+    margin-top: 6px; /* Marge supérieure */
+    margin-bottom: 16px; /* Marge inférieure */
+    resize: vertical; /* Permet à l'utilisateur de redimensionner la textarea verticalement */
+}
 
+/* Style les inputs de type "text", les éléments select et les textareas */
+input[type=email], select, textarea {
+    width: 100%; /* Largeur pleine */
+    padding: 12px; /* Un peu de padding */
+    border: 1px solid #ccc; /* Bordure grise */
+    border-radius: 4px; /* Bords arrondis */
+    box-sizing: border-box; /* S'assurer que le padding et la largeur restent en place */
+    margin-top: 6px; /* Marge supérieure */
+    margin-bottom: 16px; /* Marge inférieure */
+    resize: vertical; /* Permet à l'utilisateur de redimensionner la textarea verticalement */
+}
+
+/* Style le bouton de soumission avec une couleur de fond spécifique */
+button[type=submit] {
+    background-color: #898989;
+    color: rgb(255, 255, 255);
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Lorsque la souris passe sur le bouton de soumission, ajoute une couleur verte plus foncée */
+button[type=submit]:hover {
+    background-color: #606060;
+}
+
+/* Ajoute une couleur de fond et un peu de padding autour du formulaire */
+.container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    width: 50%; /* La largeur de l'élément est de 50% de la page */
+    margin: 0 auto; /* Centrage horizontal */
+}

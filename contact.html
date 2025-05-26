@@ -33,6 +33,132 @@
         </ul>
     </section>
 
+    <div class="container">               
+            <form id="contact-form">
+                <label for="name">Name</label>
+                <input type="text" id="fname" name="name" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="country">Country</label>
+                <select id="country" name="country" required onchange="handleCountryChange(this)">
+                    <option value="" disabled selected>Select your country</option>
+                    <option value="Australia">Australia</option>
+                    <option value="Canada">Canada</option>
+                    <option value="USA">USA</option>
+                    <option value="France">France</option>
+                    <option value="Germany">Germany</option>
+                    <option value="Hungary">Hungary</option>
+                    <option value="Argentina">Argentina</option>
+                    <option value="Belgium">Belgium</option>
+                    <option value="Brazil">Brazil</option>
+                    <option value="China">China</option>
+                    <option value="Denmark">Denmark</option>
+                    <option value="Egypt">Egypt</option>
+                    <option value="Finland">Finland</option>
+                    <option value="Greece">Greece</option>
+                    <option value="India">India</option>
+                    <option value="Indonesia">Indonesia</option>
+                    <option value="Ireland">Ireland</option>
+                    <option value="Israel">Israel</option>
+                    <option value="Italy">Italy</option>
+                    <option value="Japan">Japan</option>
+                    <option value="Mexico">Mexico</option>
+                    <option value="Netherlands">Netherlands</option>
+                    <option value="New Zealand">New Zealand</option>
+                    <option value="Norway">Norway</option>
+                    <option value="Pakistan">Pakistan</option>
+                    <option value="Philippines">Philippines</option>
+                    <option value="Poland">Poland</option>
+                    <option value="Portugal">Portugal</option>
+                    <option value="Russia">Russia</option>
+                    <option value="Saudi Arabia">Saudi Arabia</option>
+                    <option value="Singapore">Singapore</option>
+                    <option value="South Africa">South Africa</option>
+                    <option value="South Korea">South Korea</option>
+                    <option value="Spain">Spain</option>
+                    <option value="Sweden">Sweden</option>
+                    <option value="Switzerland">Switzerland</option>
+                    <option value="Thailand">Thailand</option>
+                    <option value="Turkey">Turkey</option>
+                    <option value="Ukraine">Ukraine</option>
+                    <option value="United Arab Emirates">United Arab Emirates</option>
+                    <option value="United Kingdom">United Kingdom</option>
+                    <option value="Vietnam">Vietnam</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <!-- Champ texte caché au départ -->
+                <input type="text" id="other-country" name="other-country" placeholder="Please specify your country" style="display: none; margin-top: 10px;" />
+
+                <label for="reason">Reason</label>
+                <select id="reason" name="reason" required onchange="handleReasonChange(this)">
+                    <option value="" disabled selected>Why do you want to contact us ?</option>
+                    <option value="professionnal">Professionnal contact</option>
+                    <option value="entreprise">Personnal contact</option>
+                    <option value="Other">Other</option>
+                </select>
+                
+                <input type="text" id="reason-country" name="reason-country" placeholder="Please specify a reason" style="display: none; margin-top: 10px;" />
+                
+                <script>
+                    function handleCountryChange(select) {
+                        const otherCountryInput = document.getElementById('other-country');
+                        if (select.value === 'Other') {
+                            otherCountryInput.style.display = 'block';
+                            otherCountryInput.required = true;
+                        } else {
+                            otherCountryInput.style.display = 'none';
+                            otherCountryInput.required = false;
+                        }
+                    }
+                    function handleReasonChange(select) {
+                        const otherReasonInput = document.getElementById('reason-country');
+                        if (select.value === 'Other') {
+                            otherReasonInput.style.display = 'block';
+                            otherReasonInput.required = true;
+                        } else {
+                            otherReasonInput.style.display = 'none';
+                            otherReasonInput.required = false;
+                        }
+                    }
+                </script>                        
+
+                <label for="message">Message</label>
+                <textarea name="message" rows="5" required></textarea>
+
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    
+        <script type="text/javascript">
+            document.getElementById('contact-form').addEventListener('submit', function(event) {
+                event.preventDefault(); // Empêche le rechargement de la page
+
+                // Récupère les données du formulaire
+                var templateParams = {
+                    name: document.getElementById('fname').value,
+                    from_email: document.getElementById('email').value,
+                    country: document.getElementById('country').value,
+                    reason: document.getElementById('reason').value,
+                    message: document.querySelector('textarea[name="message"]').value
+                };
+
+                // Envoi via EmailJS
+                emailjs.send('service_dhalx8d', 'template_ctmu1iq', templateParams)
+                    .then(function(response) {
+                        console.log('Success!', response);
+                        alert('Message successfuly sent!');
+                        // Réinitialise le formulaire
+                        document.getElementById('contact-form').reset();
+                    }, function(error) {
+                        console.log('Error...', error);
+                        alert(`There was an error : ${error.text}`);
+                    });
+            });
+        </script>
+
     <footer>
         <p>&copy; 2025 Trinity Ventures. All rights reserved.</p>
         <p>Trinity Ventures is registered in France, Isère (38)</p>
